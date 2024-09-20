@@ -1,0 +1,201 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Frame name="LooTrackerOptionsFrame" parent="UIParent" hidden="true" frameStrata="HIGH" movable="true" resizable="true">
+        <Size>
+            <AbsDimension x="400" y="500"/>
+        </Size>
+        <Anchors>
+            <Anchor point="CENTER"/>
+        </Anchors>
+        <Backdrop bgFile="Interface\\DialogFrame\\UI-DialogBox-Background" edgeFile="Interface\\DialogFrame\\UI-DialogBox-Border" tile="true" tileSize="32" edgeSize="32">
+            <BackgroundInsets left="11" right="12" top="12" bottom="11"/>
+        </Backdrop>
+        <Scripts>
+            <OnShow>
+                self:SetBackdropBorderColor(1, 1, 1, 0.8)
+            </OnShow>
+        </Scripts>
+
+        <!-- Title -->
+        <FontString name="$parentTitle" text="Loot Tracker Options" font="GameFontHighlightLarge">
+            <Size>
+                <AbsDimension x="380" y="30"/>
+            </Size>
+            <Anchors>
+                <Anchor point="TOP" relativePoint="TOP" x="0" y="-10"/>
+            </Anchors>
+            <JustifyH value="CENTER"/>
+        </FontString>
+
+        <!-- Font Size Slider -->
+        <Slider name="$parentFontSizeSlider" minValue="8" maxValue="24" step="1" value="14" anchor="TOPLEFT" anchorTo="$parent" offset="10">
+            <Size>
+                <AbsDimension x="300" y="20"/>
+            </Size>
+            <Anchors>
+                <Anchor point="TOPLEFT" relativePoint="TOPLEFT" x="10" y="-50"/>
+            </Anchors>
+            <Text>
+                <FontString name="$parentText" text="Font Size:" justifyH="LEFT" font="GameFontNormal">
+                    <Size>
+                        <AbsDimension x="100" y="20"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="LEFT" relativePoint="LEFT" x="0" y="0"/>
+                    </Anchors>
+                </FontString>
+            </Text>
+        </Slider>
+
+        <!-- Minimap Checkbox -->
+        <CheckButton name="$parentMinimapCheckbox" text="Show Minimap Button" anchor="TOPLEFT" anchorTo="$parent" offset="10">
+            <Size>
+                <AbsDimension x="300" y="30"/>
+            </Size>
+            <Anchors>
+                <Anchor point="TOPLEFT" relativePoint="TOPLEFT" x="10" y="-90"/>
+            </Anchors>
+            <Scripts>
+                <OnClick>
+                    -- Script to handle minimap checkbox toggle
+                </OnClick>
+            </Scripts>
+        </CheckButton>
+
+<!-- Rarity Check Buttons -->
+<Frame name="$parentRarityOptions" enableMouse="true">
+    <Size>
+        <AbsDimension x="300" y="120"/>
+    </Size>
+    <Anchors>
+        <Anchor point="TOPLEFT" relativePoint="TOPLEFT" x="10" y="-130"/>
+    </Anchors>
+
+    <!-- Common Rarity -->
+    <CheckButton name="$parentRarityCommon" inherits="UICheckButtonTemplate" text="Common">
+        <Size>
+            <AbsDimension x="200" y="20"/>
+        </Size>
+        <Anchors>
+            <Anchor point="TOPLEFT" relativePoint="TOPLEFT" x="0" y="0"/>
+        </Anchors>
+        <Scripts>
+            <OnClick>
+                LooTracker_SetRarity("Common");
+            </OnClick>
+        </Scripts>
+    </CheckButton>
+
+    <!-- Uncommon Rarity -->
+    <CheckButton name="$parentRarityUncommon" inherits="UICheckButtonTemplate" text="Uncommon">
+        <Size>
+            <AbsDimension x="200" y="20"/>
+        </Size>
+        <Anchors>
+            <Anchor point="TOPLEFT" relativePoint="TOPLEFT" x="0" y="-25"/>
+        </Anchors>
+        <Scripts>
+            <OnClick>
+                LooTracker_SetRarity("Uncommon");
+            </OnClick>
+        </Scripts>
+    </CheckButton>
+
+    <!-- Repeat for other rarities... -->
+    <!-- Rare Rarity -->
+    <CheckButton name="$parentRarityRare" inherits="UICheckButtonTemplate" text="Rare">
+        <Size>
+            <AbsDimension x="200" y="20"/>
+        </Size>
+        <Anchors>
+            <Anchor point="TOPLEFT" relativePoint="TOPLEFT" x="0" y="-50"/>
+        </Anchors>
+        <Scripts>
+            <OnClick>
+                LooTracker_SetRarity("Rare");
+            </OnClick>
+        </Scripts>
+    </CheckButton>
+
+    <!-- Epic Rarity -->
+    <CheckButton name="$parentRarityEpic" inherits="UICheckButtonTemplate" text="Epic">
+        <Size>
+            <AbsDimension x="200" y="20"/>
+        </Size>
+        <Anchors>
+            <Anchor point="TOPLEFT" relativePoint="TOPLEFT" x="0" y="-75"/>
+        </Anchors>
+        <Scripts>
+            <OnClick>
+                LooTracker_SetRarity("Epic");
+            </OnClick>
+        </Scripts>
+    </CheckButton>
+
+    <!-- Legendary Rarity -->
+    <CheckButton name="$parentRarityLegendary" inherits="UICheckButtonTemplate" text="Legendary">
+        <Size>
+            <AbsDimension x="200" y="20"/>
+        </Size>
+        <Anchors>
+            <Anchor point="TOPLEFT" relativePoint="TOPLEFT" x="0" y="-100"/>
+        </Anchors>
+        <Scripts>
+            <OnClick>
+                LooTracker_SetRarity("Legendary");
+            </OnClick>
+        </Scripts>
+    </CheckButton>
+
+    <!-- Vanity Rarity -->
+    <CheckButton name="$parentRarityVanity" inherits="UICheckButtonTemplate" text="Vanity">
+        <Size>
+            <AbsDimension x="200" y="20"/>
+        </Size>
+        <Anchors>
+            <Anchor point="TOPLEFT" relativePoint="TOPLEFT" x="0" y="-125"/>
+        </Anchors>
+        <Scripts>
+            <OnClick>
+                LooTracker_SetRarity("Vanity");
+            </OnClick>
+        </Scripts>
+    </CheckButton>
+
+</Frame>
+
+
+
+        <!-- Keybind Input -->
+        <EditBox name="$parentKeybindInput" text="Keybind to Open Frame:" anchor="TOPLEFT" anchorTo="$parent" offset="10">
+            <Size>
+                <AbsDimension x="300" y="30"/>
+            </Size>
+            <Anchors>
+                <Anchor point="TOPLEFT" relativePoint="TOPLEFT" x="10" y="-170"/>
+            </Anchors>
+            <FontString name="$parentText" text="Keybind:" justifyH="LEFT" font="GameFontNormal">
+                <Size>
+                    <AbsDimension x="100" y="30"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="LEFT" relativePoint="LEFT" x="0" y="0"/>
+                </Anchors>
+            </FontString>
+        </EditBox>
+
+        <!-- ESC Button Checkbox -->
+        <CheckButton name="$parentESCButtonCheckbox" text="Close Options with ESC" anchor="TOPLEFT" anchorTo="$parent" offset="10">
+            <Size>
+                <AbsDimension x="300" y="30"/>
+            </Size>
+            <Anchors>
+                <Anchor point="TOPLEFT" relativePoint="TOPLEFT" x="10" y="-210"/>
+            </Anchors>
+            <Scripts>
+                <OnClick>
+                    -- Script to handle ESC button toggle
+                </OnClick>
+            </Scripts>
+        </CheckButton>
+    </Frame>
+</Ui>

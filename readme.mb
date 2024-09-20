@@ -1,0 +1,45 @@
+LooTracker Addon & Roll Data Exporter For 3.3.5a Client (made it for ascension wow so dont know if it works for other servers)
+Overview
+LooTracker is a World of Warcraft addon designed to track loot rolls within your party or raid. It captures valuable information about items, their rarities, and the players who rolled for them. This README provides instructions on how to use the addon and an external Python script to export roll data for analysis.
+
+Features
+Tracks loot rolls, including item name, rarity, and the player who rolled.
+Option to show/hide the main frame and toggle settings using chat commands.
+Customizable options through an in-game interface.
+Export roll data to a CSV file for easy analysis in Google Sheets or Excel.
+
+Installation:
+Download the Addon: Place the LooTracker folder into your WoW AddOns directory, typically found at:
+<Game Folder>\Interface\AddOns\
+Enable the Addon: Launch World of Warcraft and enable the LooTracker addon from the AddOns menu.
+
+Lua Data Storage: The addon saves roll data in the file located at:
+<game Folder>\WTF\Account\<YourAccountName>\SavedVariables\LooTracker.lua
+
+Using the Addon
+Chat Commands:
+/lt show: Shows the LooTracker main frame.
+/lt hide: Hides the LooTracker main frame.
+/lt ui or /ltui: Toggles the main frame visibility.
+Options: Access options for showing the minimap button and setting item rarity filters via the addon interface.
+
+Exporting Roll Data
+Requirements
+Python 3.x
+Change Folder in PY file
+# Adjust the path to where your LooTracker.lua file is located
+    lua_file_path = r'<game Folder>\WTF\Account\<YourAccountName>\SavedVariables\LooTracker.lua'
+    output_csv_path = 'output/roll_data.csv'
+
+You find Python File and Exporter.bat from Addon folder
+Double-click run_export.bat to run the exporter. The roll data will be exported to output/roll_data.csv.
+Disclaimer
+The use of eval() in the script may pose security risks if the Lua data is untrusted. Consider using a safer alternative for parsing the Lua data if needed.
+License
+This addon and its exporter are provided free of charge. You may modify and share the code, but please give credit to the original authors.
+
+Support
+For issues or feature requests, please open an issue on the repository or contact the author. (trying my best)
+
+Fixed my code?
+I would like to get fixes im not coder so there can be lots staff to fix
